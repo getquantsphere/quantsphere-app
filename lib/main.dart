@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quantsphere/pages/login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'QuantSphere'),
+      home: const LoginPage(),
     );
   }
 }
@@ -32,7 +33,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -46,7 +46,8 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: const Text("Landing Page of the application"), // This trailing comma makes auto-formatting nicer for build methods.
+      body: const Text(
+          "Landing Page of the application"), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
