@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "779351709049",
+    "project_id": "quantshere",
+    "storage_bucket": "quantshere.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:779351709049:android:146d51a547a49806e34ba8",
+        "android_client_info": {
+          "package_name": "com.example.quantsphere"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSPWk0FtErkl_6DBoOEhZlcwwjT7wNCUM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
