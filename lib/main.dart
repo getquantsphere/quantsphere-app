@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:quantsphere/pages/login_page.dart';
+import 'package:quantsphere/screens/home_page.dart';
+import 'package:quantsphere/screens/login_page.dart';
 import 'firebase_options.dart';
 
 Future main() async {
@@ -22,7 +24,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const LoginPage(),
+      home: const MyHomePage(title: "QuantSphere"),
     );
   }
 }
@@ -40,12 +42,15 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: const Text(
-          "Landing Page of the application"), // This trailing comma makes auto-formatting nicer for build methods.
+      body: StreamBuilder<User?>(
+          stream: FirebaseAuth.instance.authStateChanges(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return const Text("HomePage!");
+            } else {
+              return const LoginPage();
+            }
+          }),
     );
   }
 }

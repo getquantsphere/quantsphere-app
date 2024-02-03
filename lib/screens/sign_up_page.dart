@@ -1,13 +1,15 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -15,7 +17,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('QuantSphere - Login'),
+        title: const Text('QuantSphere - SignUp'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -38,25 +40,12 @@ class _LoginPageState extends State<LoginPage> {
             ),
             const SizedBox(height: 32),
             TextButton(
-              onPressed: () {
-                // Perform login logic here
-                String username = _usernameController.text;
-                String password = _passwordController.text;
-
-                // Replace the below logic with actual authentication
-                if (username == 'example' && password == 'password') {
-                  // Successful login, navigate to next screen or perform desired action
-                  print('Login successful!');
-                } else {
-                  // Failed login, show an error message or perform desired action
-                  print('Login failed. Please check your credentials.');
-                }
-              },
+              onPressed: () => {signUp()},
               style: TextButton.styleFrom(
                   backgroundColor: Colors.blue,
                   fixedSize: const Size.fromWidth(200)),
               child: const Text(
-                'Login',
+                'Sign Up',
                 style: TextStyle(
                   color: Colors.white,
                 ),
@@ -66,5 +55,15 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  Future signUp() async {
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _usernameController.text.trim(),
+          password: _passwordController.text.trim());
+      print("Success!");
+    } on FirebaseAuthException catch (e) {
+      print("Failed!");
+    }
   }
 }
