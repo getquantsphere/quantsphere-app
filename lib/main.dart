@@ -15,6 +15,12 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   var _currentIndex = 0;
 
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text('HomePage', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    Text('InvestmentsPage', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    Text('ProfilePage', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,6 +32,9 @@ class _AppState extends State<App> {
       home: Scaffold(
         appBar: AppBar(
           title: Text(App.title),
+        ),
+        body: Center(
+          child: _widgetOptions.elementAt(_currentIndex),
         ),
         bottomNavigationBar: SalomonBottomBar(
           currentIndex: _currentIndex,
