@@ -5,63 +5,12 @@ void main() {
   runApp(App());
 }
 
-class App extends StatefulWidget {
-  static final title = 'QuantSphere';
-
-  @override
-  _AppState createState() => _AppState();
-}
-
-class _AppState extends State<App> {
-  var _currentIndex = 0;
-
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text('HomePage', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-    Text('InvestmentsPage', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-    Text('ProfilePage', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-  ];
+class App extends StatelessWidget {
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: App.title,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(App.title),
-        ),
-        body: Center(
-          child: _widgetOptions.elementAt(_currentIndex),
-        ),
-        bottomNavigationBar: SalomonBottomBar(
-          currentIndex: _currentIndex,
-          onTap: (i) => setState(() => _currentIndex = i),
-          items: [
-            SalomonBottomBarItem(
-              icon: const Icon(Icons.home),
-              title: const Text("Home"),
-              selectedColor: Colors.black,
-            ),
-
-            SalomonBottomBarItem(
-              icon: const Icon(Icons.account_balance),
-              title: const Text("Investments"),
-              selectedColor: Colors.black,
-            ),
-
-            SalomonBottomBarItem(
-              icon: const Icon(Icons.person),
-              title: const Text("Profile"),
-              selectedColor: Colors.black,
-            ),
-          ],
-          itemPadding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 30.0),
-        ),
-      ),
-    );
+    return const Placeholder();
   }
 }
 
